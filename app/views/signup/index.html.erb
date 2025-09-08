@@ -1,0 +1,126 @@
+<!-- Sign Up Page -->
+<section class="signup-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="signup-card fade-in">
+          <div class="signup-header text-center mb-4">
+            <h1>Đăng ký tài khoản</h1>
+            <p>Tham gia cộng đồng của chúng tôi ngay hôm nay!</p>
+          </div>
+          
+          <form class="signup-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">Họ *</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">Tên *</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email *</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="form-text">Chúng tôi sẽ không bao giờ chia sẻ email của bạn.</div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="username" class="form-label">Tên đăng nhập *</label>
+              <input type="text" class="form-control" id="username" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Mật khẩu *</label>
+              <input type="password" class="form-control" id="password" required>
+              <div class="form-text">Mật khẩu phải có ít nhất 8 ký tự.</div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Xác nhận mật khẩu *</label>
+              <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="birthDate" class="form-label">Ngày sinh</label>
+              <input type="date" class="form-control" id="birthDate">
+            </div>
+            
+            <div class="mb-3">
+              <label for="gender" class="form-label">Giới tính</label>
+              <select class="form-control" id="gender">
+                <option value="">Chọn giới tính</option>
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+                <option value="other">Khác</option>
+              </select>
+            </div>
+            
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">
+                Tôi đồng ý với <a href="#" class="text-primary">Điều khoản sử dụng</a> và <a href="#" class="text-primary">Chính sách bảo mật</a> *
+              </label>
+            </div>
+            
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="newsletter">
+              <label class="form-check-label" for="newsletter">
+                Tôi muốn nhận thông tin cập nhật và khuyến mãi qua email
+              </label>
+            </div>
+            
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">Đăng ký ngay</button>
+            </div>
+          </form>
+          
+          <div class="signup-footer text-center mt-4">
+            <p>Đã có tài khoản? <a href="#" class="text-primary">Đăng nhập ngay</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fade in animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in elements
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+  
+  // Password confirmation validation
+  const password = document.getElementById('password');
+  const confirmPassword = document.getElementById('confirmPassword');
+  
+  function validatePassword() {
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setCustomValidity('Mật khẩu không khớp');
+    } else {
+      confirmPassword.setCustomValidity('');
+    }
+  }
+  
+  password.addEventListener('change', validatePassword);
+  confirmPassword.addEventListener('keyup', validatePassword);
+});
+</script>

@@ -1,0 +1,102 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h1 class="fade-in">Welcome to Sample App</h1>
+        <p class="fade-in">This is the home page for the Ruby on Rails Tutorial sample application. Learn how to build professional-grade web applications with Rails!</p>
+        <div class="hero-buttons fade-in">
+          <a href="/users" class="btn btn-light btn-lg">View Users</a>
+          <a href="/microposts" class="btn btn-outline-light btn-lg">View Microposts</a>
+          <%= link_to "Sign Up", signup_path, class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="fade-in">Key Features</h2>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">👥</div>
+          <h4>User Management</h4>
+          <p>Create, edit, and manage user accounts with full CRUD functionality. Complete user authentication and authorization system.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">💬</div>
+          <h4>Microposts</h4>
+          <p>Share short messages and connect with other users in the community. Real-time updates and social interactions.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔗</div>
+          <h4>Relationships</h4>
+          <p>Built-in associations between users and microposts for a complete social experience. Follow users and see their posts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item fade-in">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Users</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item fade-in">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Microposts</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item fade-in">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Availability</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item fade-in">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fade in animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in elements
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
