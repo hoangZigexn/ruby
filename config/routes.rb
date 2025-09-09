@@ -12,8 +12,9 @@ App::Application.routes.draw do
   # Contact route
   get 'contact' => 'contact#index'
   
-  # Signup route
+  # Signup routes
   get 'signup' => 'signup#index'
+  post 'signup' => 'signup#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
