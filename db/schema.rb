@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20250909060041) do
     t.string   "last_name"
     t.string   "first_name"
     t.date     "birthday"
-    t.string   "password"
     t.string   "password_digest"
   end
 
