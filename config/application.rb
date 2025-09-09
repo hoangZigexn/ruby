@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Require bcrypt for has_secure_password
+require 'bcrypt'
+
 module App
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
