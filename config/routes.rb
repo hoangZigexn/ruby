@@ -4,7 +4,11 @@ App::Application.routes.draw do
   get 'home' => 'home#index'
   
   resources :microposts
-  resources :users
+  resources :users do
+    member do
+      get :welcome
+    end
+  end
 
   # Hello World route
   get 'hello' => 'welcome#hello'
@@ -12,8 +16,9 @@ App::Application.routes.draw do
   # Contact route
   get 'contact' => 'contact#index'
   
-  # Signup route
+  # Signup routes
   get 'signup' => 'signup#index'
+  post 'signup' => 'signup#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
