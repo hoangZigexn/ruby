@@ -10,7 +10,7 @@ if defined?(Bundler)
 end
 
 # Require bcrypt for has_secure_password
-require 'bcrypt'
+
 
 module App
   class Application < Rails::Application
