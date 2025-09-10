@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home | Ruby on Rails Tutorial Sample App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      font-size: 3em;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    .description {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+    .btn-secondary {
+      background: linear-gradient(45deg, #f093fb, #f5576c);
+      box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+    }
+    .btn-secondary:hover {
+      box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .feature {
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border-top: 4px solid #667eea;
+    }
+    .feature h3 {
+      color: #333;
+      margin-top: 0;
+    }
+    .feature p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sample App</h1>
+    <p class="subtitle">Welcome to the Ruby on Rails Tutorial</p>
+    
+    <div class="description">
+      This is the home page for the
+      <a href="https://www.railstutorial.org/" style="color: #667eea; text-decoration: none; font-weight: bold;">Ruby on Rails Tutorial</a>
+      sample application. Learn how to build professional-grade web applications with Rails!
+    </div>
+    
+    <div class="cta-buttons">
+      <a href="/users" class="btn">View Users</a>
+      <a href="/microposts" class="btn btn-secondary">View Microposts</a>
+    </div>
+    
+    <div class="features">
+      <div class="feature">
+        <h3>👥 User Management</h3>
+        <p>Create, edit, and manage user accounts with full CRUD functionality.</p>
+      </div>
+      <div class="feature">
+        <h3>💬 Microposts</h3>
+        <p>Share short messages and connect with other users in the community.</p>
+      </div>
+      <div class="feature">
+        <h3>🔗 Relationships</h3>
+        <p>Built-in associations between users and microposts for a complete social experience.</p>
+      </div>
+    </div>
+    
+    <div class="cta-buttons" style="margin-top: 50px;">
+      <a href="/static_pages/help" class="btn">Get Help</a>
+      <a href="/static_pages/about" class="btn btn-secondary">About Us</a>
+    </div>
+  </div>
+</body>
+</html>
