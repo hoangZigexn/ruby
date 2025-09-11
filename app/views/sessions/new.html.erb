@@ -37,6 +37,12 @@
               <input type="password" name="session[password]" id="session_password" class="form-control" required />
             </div>
             
+            <div class="mb-3 form-check">
+              <input type="hidden" name="session[remember_me]" value="0" />
+              <input type="checkbox" name="session[remember_me]" id="session_remember_me" value="1" class="form-check-input" />
+              <label for="session_remember_me" class="form-check-label">Remember me on this computer</label>
+            </div>
+            
             <div class="d-grid">
               <input type="submit" value="Login" class="btn btn-primary btn-lg" />
             </div>
@@ -178,6 +184,24 @@
 
 .btn-close:hover {
   opacity: 0.75;
+}
+
+/* Form check styles */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+  margin-top: 0;
+}
+
+.form-check-label {
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
 }
 </style>
 
