@@ -12,7 +12,9 @@ App::Application.routes.draw do
 
   # Hello World route
   get 'hello' => 'welcome#hello'
-  
+
+  # Not found route
+  get 'notfound' => 'welcome#notfound'
   # Contact route
   get 'contact' => 'contact#index'
   

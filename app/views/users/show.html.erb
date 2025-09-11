@@ -1,15 +1,78 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <div class="user-details">
+      <div class="detail-item">
+        <strong>Full Name:</strong>
+        <span><%= @user.name %></span>
+      </div>
+      
+      <% if @user.first_name.present? %>
+        <div class="detail-item">
+          <strong>First Name:</strong>
+          <span><%= @user.first_name %></span>
+        </div>
+      <% end %>
+      
+      <% if @user.last_name.present? %>
+        <div class="detail-item">
+          <strong>Last Name:</strong>
+          <span><%= @user.last_name %></span>
+        </div>
+      <% end %>
+      
+      <div class="detail-item">
+        <strong>Email:</strong>
+        <span><%= @user.email %></span>
+      </div>
+      
+      <% if @user.age.present? %>
+        <div class="detail-item">
+          <strong>Age:</strong>
+          <span><%= @user.age %></span>
+        </div>
+      <% end %>
+      
+      <% if @user.birthday.present? %>
+        <div class="detail-item">
+          <strong>Birthday:</strong>
+          <span><%= @user.birthday.strftime("%B %d, %Y") %></span>
+        </div>
+      <% end %>
+      
+      <% if @user.gender.present? %>
+        <div class="detail-item">
+          <strong>Gender:</strong>
+          <span><%= @user.gender == 1 ? 'Male' : (@user.gender == 2 ? 'Female' : 'Other') %></span>
+        </div>
+      <% end %>
+      
+      <% if @user.admin? %>
+        <div class="detail-item admin-badge">
+          <strong>Role:</strong>
+          <span class="badge badge-danger">Admin</span>
+        </div>
+      <% end %>
+      
+      <div class="detail-item">
+        <strong>Member since:</strong>
+        <span><%= @user.created_at.strftime("%B %d, %Y") %></span>
+      </div>
+    </div>
+    
+    <div class="user-actions">
+      <% if current_user?(@user) || admin_user? %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to 'Back to Users', users_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
