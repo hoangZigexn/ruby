@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :microposts
   has_secure_password
-  attr_accessible :email, :name, :age, :gender, :last_name, :first_name, :birthday, :password, :password_confirmation, :remember_token
+  
+  attr_accessible :email, :name, :age, :gender, :last_name, :first_name, :birthday, 
+                  :password, :password_confirmation, :admin
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: { message: "can't be blank" }, 
@@ -14,7 +16,7 @@ class User < ActiveRecord::Base
   validates :age, presence: { message: "can't be blank" }, 
             numericality: { only_integer: true, greater_than: 0, message: "must be a positive integer" }
   
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
 
   # Returns a random token for remember me functionality
   def User.new_token
@@ -44,8 +46,12 @@ class User < ActiveRecord::Base
   private
 
     # Returns the hash digest of the given string
-    def User.digest(string)
-      cost = Rails.env.test? ? BCrypt::Engine::MIN_COST : BCrypt::Engine::DEFAULT_COST
-      BCrypt::Password.create(string, cost: cost)
-    end
+  def User.digest(string)
+    cost = Rails.env.test? ? BCrypt::Engine::MIN_COST : BCrypt::Engine::DEFAULT_COST
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def downcase_email
+    self.email = email.downcase
+  end
 end

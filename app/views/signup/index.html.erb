@@ -1,3 +1,6 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "signup", :media => "all" %>
+<% end %>
 <!-- Sign Up Page -->
 <section class="signup-section">
   <div class="container">
@@ -9,17 +12,12 @@
             <p>Join our community today!</p>
           </div>
           
+          <!-- Flash Messages -->
+          <%= render 'layouts/flash_messages' %>
+          
           <%= form_for @user, url: signup_path, method: :post, local: true, html: { class: "signup-form" } do |f| %>
-            <% if @user.errors.any? %>
-              <div class="alert alert-danger">
-                <h4><%= pluralize(@user.errors.count, "error") %> occurred:</h4>
-                <ul class="mb-0">
-                  <% @user.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
+            <!-- Error Messages -->
+            <%= render 'layouts/error_messages', object: @user %>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="user_first_name" class="form-label">First Name *</label>
@@ -101,43 +99,6 @@
   </div>
 </section>
 
-<!-- JavaScript for animations -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Fade in animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
-  
-  // Password confirmation validation
-  const password = document.getElementById('user_password');
-  const confirmPassword = document.getElementById('user_password_confirmation');
-  
-  function validatePassword() {
-    if (password.value !== confirmPassword.value) {
-      confirmPassword.setCustomValidity('Passwords do not match');
-    } else {
-      confirmPassword.setCustomValidity('');
-    }
-  }
-  
-  if (password && confirmPassword) {
-    password.addEventListener('change', validatePassword);
-    confirmPassword.addEventListener('keyup', validatePassword);
-  }
-});
-</script>
+<% content_for :javascript do %>
+  <%= javascript_include_tag "signup" %>
+<% end %>

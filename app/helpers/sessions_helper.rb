@@ -14,15 +14,12 @@ module SessionsHelper
 
   # Returns the user corresponding to the remember token cookie.
   def current_user
-    if (user_id = session[:user_id])
-      @current_user ||= User.where(id: user_id).first
-    elsif (user_id = cookies.signed[:user_id])
-      user = User.where(id: user_id).first
-      if user && user.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
-      end
-    end
+    return @current_user if defined?(@current_user)
+    return nil unless session[:user_id]
+
+    @current_user = User.find_by_id(session[:user_id])
+    session.delete(:user_id) unless @current_user
+    @current_user
   end
 
   # Returns true if the user is logged in, false otherwise.
