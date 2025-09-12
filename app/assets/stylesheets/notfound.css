@@ -1,0 +1,52 @@
+/* 404 Error Page Styles */
+.error-page {
+  padding: 60px 0;
+  margin-top: 50px;
+}
+
+.error-code h1 {
+  font-size: 120px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-message h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin: 20px 0;
+}
+
+.error-message p {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 40px;
+}
+
+.error-actions .btn {
+  margin: 0 10px;
+  padding: 12px 30px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+.btn-default {
+  background-color: #ecf0f1;
+  border-color: #bdc3c7;
+  color: #2c3e50;
+}
+
+.btn-default:hover {
+  background-color: #d5dbdb;
+  border-color: #a6acaf;
+}
