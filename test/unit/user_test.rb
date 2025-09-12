@@ -283,4 +283,91 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal "test@example.com", @user.email
   end
+
+  # Remember me functionality tests
+  test "should generate a new token" do
+    token1 = User.new_token
+    token2 = User.new_token
+    assert_not_equal token1, token2
+    assert token1.length > 20
+    assert token2.length > 20
+  end
+
+  test "should remember a user" do
+    @user.save
+    @user.remember
+    assert_not_nil @user.remember_token
+    assert_not_nil @user.remember_digest
+    assert @user.remember_digest.length > 20
+  end
+
+  test "should authenticate with correct remember token" do
+    @user.save
+    @user.remember
+    assert @user.authenticated?(@user.remember_token)
+  end
+
+  test "should not authenticate with incorrect remember token" do
+    @user.save
+    @user.remember
+    assert_not @user.authenticated?('wrong_token')
+  end
+
+  test "should not authenticate with nil remember token" do
+    @user.save
+    @user.remember
+    assert_not @user.authenticated?(nil)
+  end
+
+  test "should not authenticate when remember_digest is nil" do
+    @user.save
+    assert_nil @user.remember_digest
+    assert_not @user.authenticated?('any_token')
+  end
+
+  test "should forget a user" do
+    @user.save
+    @user.remember
+    assert_not_nil @user.remember_digest
+    @user.forget
+    assert_nil @user.remember_digest
+  end
+
+  test "should generate unique remember tokens" do
+    @user.save
+    tokens = []
+    10.times do
+      @user.remember
+      tokens << @user.remember_token
+    end
+    assert_equal tokens.uniq.length, tokens.length
+  end
+
+  test "should update remember_digest when remembering" do
+    @user.save
+    original_digest = @user.remember_digest
+    @user.remember
+    assert_not_equal original_digest, @user.remember_digest
+  end
+
+  test "should have remember_token accessor" do
+    @user.remember_token = "test_token"
+    assert_equal "test_token", @user.remember_token
+  end
+
+  test "should digest tokens consistently" do
+    token = "test_token"
+    digest1 = User.digest(token)
+    digest2 = User.digest(token)
+    assert_equal digest1, digest2
+    assert digest1.length > 20
+  end
+
+  test "should generate different digests for different tokens" do
+    token1 = "token1"
+    token2 = "token2"
+    digest1 = User.digest(token1)
+    digest2 = User.digest(token2)
+    assert_not_equal digest1, digest2
+  end
 end
