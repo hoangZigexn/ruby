@@ -1,65 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>About | Ruby on Rails Tutorial Sample App</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      color: #333;
-      text-align: center;
-      border-bottom: 3px solid #007bff;
-      padding-bottom: 10px;
-    }
-    .content {
-      margin-top: 30px;
-    }
-    .feature {
-      background: #f8f9fa;
-      padding: 20px;
-      margin: 20px 0;
-      border-left: 4px solid #007bff;
-      border-radius: 5px;
-    }
-    .feature h3 {
-      color: #007bff;
-      margin-top: 0;
-    }
-    .nav-links {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .nav-links a {
-      display: inline-block;
-      margin: 0 15px;
-      padding: 10px 20px;
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .nav-links a:hover {
-      background: #0056b3;
-    }
-  </style>
-</head>
-<body>
+<% provide(:title, "About") %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "static_pages", :media => "all" %>
+<% end %>
+
+<div class="about-page">
   <div class="container">
     <h1>About</h1>
     
@@ -94,5 +39,4 @@
       <a href="/microposts">Microposts</a>
     </div>
   </div>
-</body>
-</html>
+</div>
