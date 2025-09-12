@@ -86,41 +86,6 @@
   </div>
 </section>
 
-<!-- JavaScript for animations -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Fade in animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
-  
-  // Password confirmation validation
-  const password = document.getElementById('password');
-  const confirmPassword = document.getElementById('confirmPassword');
-  
-  function validatePassword() {
-    if (password.value !== confirmPassword.value) {
-      confirmPassword.setCustomValidity('Mật khẩu không khớp');
-    } else {
-      confirmPassword.setCustomValidity('');
-    }
-  }
-  
-  password.addEventListener('change', validatePassword);
-  confirmPassword.addEventListener('keyup', validatePassword);
-});
-</script>
+<% content_for :javascript do %>
+  <%= javascript_include_tag "signup" %>
+<% end %>
