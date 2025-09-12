@@ -1,0 +1,44 @@
+/* Welcome Page Styles */
+.welcome-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.welcome-card {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.welcome-title {
+  color: #333;
+  font-weight: 700;
+}
+
+.welcome-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.user-info-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 2rem;
+  border-left: 4px solid #28a745;
+}
+
+.user-info-card h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.user-info-card p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.welcome-actions {
+  margin-top: 2rem;
+}
