@@ -6,10 +6,15 @@ class User < ActiveRecord::Base
                   :password, :password_confirmation, :admin
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :name, presence: true
-  validates :password, length: { minimum: 6 }
-  validates :age, numericality: { only_integer: true, greater_than: 0 }
+  validates :email, presence: { message: "can't be blank" }, 
+            uniqueness: { message: "has already been taken" }, 
+            format: { with: VALID_EMAIL_REGEX, message: "is invalid" }
+  validates :name, presence: { message: "can't be blank" }
+  validates :password, presence: { message: "can't be blank" }, 
+            length: { minimum: 6, message: "is too short (minimum is 6 characters)" }
+  validates :password_confirmation, presence: { message: "can't be blank" }
+  validates :age, presence: { message: "can't be blank" }, 
+            numericality: { only_integer: true, greater_than: 0, message: "must be a positive integer" }
   
   before_save :downcase_email
 

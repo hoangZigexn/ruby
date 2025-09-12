@@ -41,9 +41,25 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete :destroy, id: @user
+      delete :destroy, :id => @user
     end
 
     assert_redirected_to users_path
+  end
+
+  test "should get welcome page" do
+    get :welcome, :id => @user
+    assert_response :success
+    assert_template :welcome
+    assert_equal @user, assigns(:user)
+  end
+
+  test "should show welcome page with user data" do
+    get :welcome, :id => @user
+    assert_response :success
+    assert_select 'h1', 'Welcome!'
+    assert_select 'p', /Your account has been created successfully/
+    assert_select 'p', /Full Name: #{@user.name}/
+    assert_select 'p', /Email: #{@user.email}/
   end
 end
