@@ -7,14 +7,11 @@ module SessionsHelper
 
   # Returns the current logged-in user (if any).
   def current_user
-    if session[:user_id]
-      @current_user ||= User.where(id: session[:user_id]).first
-      # If user doesn't exist in database, clear the session
-      if @current_user.nil?
-        session.delete(:user_id)
-        @current_user = nil
-      end
-    end
+    return @current_user if defined?(@current_user)
+    return nil unless session[:user_id]
+
+    @current_user = User.find_by_id(session[:user_id])
+    session.delete(:user_id) unless @current_user
     @current_user
   end
 
