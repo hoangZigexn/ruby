@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :microposts
   has_secure_password
-  attr_accessible :email, :name, :age, :gender, :last_name, :first_name, :birthday, :password, :password_confirmation
+  
+  attr_accessible :email, :name, :age, :gender, :last_name, :first_name, :birthday, 
+                  :password, :password_confirmation, :admin
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: { message: "can't be blank" }, 
@@ -14,5 +16,11 @@ class User < ActiveRecord::Base
   validates :age, presence: { message: "can't be blank" }, 
             numericality: { only_integer: true, greater_than: 0, message: "must be a positive integer" }
   
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
+  end
 end

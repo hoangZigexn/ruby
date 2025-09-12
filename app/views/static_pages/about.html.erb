@@ -1,0 +1,42 @@
+<% provide(:title, "About") %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "static_pages", :media => "all" %>
+<% end %>
+
+<div class="about-page">
+  <div class="container">
+    <h1>About</h1>
+    
+    <div class="content">
+      <p>Welcome to our Ruby on Rails application! This is a sample application built to demonstrate the power and flexibility of the Rails framework.</p>
+      
+      <div class="feature">
+        <h3>🚀 What We Do</h3>
+        <p>We create amazing web applications using Ruby on Rails, focusing on clean code, user experience, and modern web development practices.</p>
+      </div>
+      
+      <div class="feature">
+        <h3>💡 Our Mission</h3>
+        <p>To provide high-quality web solutions that help businesses grow and succeed in the digital world.</p>
+      </div>
+      
+      <div class="feature">
+        <h3>🛠️ Technologies</h3>
+        <p>We use cutting-edge technologies including Ruby on Rails, MySQL, HTML5, CSS3, and JavaScript to build robust and scalable applications.</p>
+      </div>
+      
+      <div class="feature">
+        <h3>📞 Get in Touch</h3>
+        <p>Have questions or want to work with us? We'd love to hear from you! Contact us to discuss your project needs.</p>
+      </div>
+    </div>
+    
+    <div class="nav-links">
+      <a href="/static_pages/home">Home</a>
+      <a href="/static_pages/help">Help</a>
+      <a href="/users">Users</a>
+      <a href="/microposts">Microposts</a>
+    </div>
+  </div>
+</div>

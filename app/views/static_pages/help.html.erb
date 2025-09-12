@@ -1,0 +1,55 @@
+<% provide(:title, "Help") %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "static_pages", :media => "all" %>
+<% end %>
+
+<div class="help-page">
+  <div class="container">
+    <h1>Help</h1>
+    
+    <div class="help-section">
+      <h3>📚 Getting Started</h3>
+      <p>
+        Get help on the Ruby on Rails Tutorial at the
+        <a href="https://www.railstutorial.org/help">Rails Tutorial Help page</a>.
+        To get help on this sample app, see the
+        <a href="https://www.railstutorial.org/book"><em>Ruby on Rails Tutorial</em> book</a>.
+      </p>
+    </div>
+    
+    <div class="help-section">
+      <h3>🔧 Common Issues</h3>
+      <p><strong>Database Connection Issues:</strong> Make sure your MySQL server is running and the database credentials are correct.</p>
+      <p><strong>Migration Errors:</strong> Run <code>rake db:migrate</code> to apply pending migrations.</p>
+      <p><strong>Asset Pipeline Issues:</strong> Try running <code>rake assets:precompile</code> in production.</p>
+    </div>
+    
+    <div class="help-section">
+      <h3>📖 Documentation</h3>
+      <p>For comprehensive documentation and tutorials, visit the official Rails guides and the Rails Tutorial website.</p>
+    </div>
+    
+    <div class="quick-links">
+      <a href="https://www.railstutorial.org/help" class="quick-link">
+        <h4>📖 Tutorial Help</h4>
+        <p>Get help with the Rails Tutorial</p>
+      </a>
+      <a href="https://www.railstutorial.org/book" class="quick-link">
+        <h4>📚 Rails Book</h4>
+        <p>Complete Rails Tutorial book</p>
+      </a>
+      <a href="https://guides.rubyonrails.org/" class="quick-link">
+        <h4>📋 Rails Guides</h4>
+        <p>Official Rails documentation</p>
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="/static_pages/home">Home</a>
+      <a href="/static_pages/about">About</a>
+      <a href="/users">Users</a>
+      <a href="/microposts">Microposts</a>
+    </div>
+  </div>
+</div>
