@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  email: MyString
+valid_user:
+  name: "John Doe"
+  email: "john@example.com"
+  age: 25
+  gender: 1
+  first_name: "John"
+  last_name: "Doe"
+  birthday: "1998-01-01"
+  password_digest: "$2a$10$CIGe5wLoYXaOFvxeowmCoOQn5Hn9uzrIu7Bc8phoMRrPdFF5htXAa"
 
-two:
-  name: MyString
-  email: MyString
+another_user:
+  name: "Jane Smith"
+  email: "jane@example.com"
+  age: 30
+  gender: 2
+  first_name: "Jane"
+  last_name: "Smith"
+  birthday: "1993-05-15"
+  password_digest: "$2a$10$zyxwvutsrqponmlkjihgfedcba0987654321zyxwvutsrqponmlkjihgf"
