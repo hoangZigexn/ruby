@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag "home", defer: true %>
+<% end %>
+
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="container">
@@ -76,7 +80,3 @@
     </div>
   </div>
 </section>
-
-<% content_for :javascript do %>
-  <%= javascript_include_tag "home" %>
-<% end %>

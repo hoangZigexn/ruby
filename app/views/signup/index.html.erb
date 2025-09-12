@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag "signup", defer: true %>
+<% end %>
+
 <!-- Sign Up Page -->
 <section class="signup-section">
   <div class="container">
@@ -35,7 +39,7 @@
             <div class="mb-3">
               <label for="password" class="form-label">Mật khẩu *</label>
               <input type="password" class="form-control" id="password" required>
-              <div class="form-text">Mật khẩu phải có ít nhất 8 ký tự.</div>
+              <div class="form-text">Mật khẩu phải có ít nhất 6 ký tự.</div>
             </div>
             
             <div class="mb-3">
@@ -85,7 +89,3 @@
     </div>
   </div>
 </section>
-
-<% content_for :javascript do %>
-  <%= javascript_include_tag "signup" %>
-<% end %>
