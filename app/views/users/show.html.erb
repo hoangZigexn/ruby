@@ -51,7 +51,7 @@
       <% if @user.gender.present? %>
         <div class="detail-item">
           <strong>Gender:</strong>
-          <span><%= @user.gender == 1 ? 'Male' : (@user.gender == 2 ? 'Female' : 'Other') %></span>
+          <span><%= gender_label(@user.gender) %></span>
         </div>
       <% end %>
       
