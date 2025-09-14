@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_filter :authorized_user, only: [:show]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
   
@@ -45,6 +44,20 @@ class UsersController < ApplicationController
   # GET /users/1/welcome
   def welcome
     @user = User.find(params[:id])
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   # POST /users

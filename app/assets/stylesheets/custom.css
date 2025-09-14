@@ -28,6 +28,10 @@
   color: #f8f9fa !important;
 }
 
+.margin-top-main {
+  margin-top: 80px;
+}
+
 /* Hero section */
 .hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
