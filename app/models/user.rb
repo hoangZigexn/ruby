@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
   has_secure_password
 
   PASSWORD_RESET_EXPIRATION_HOURS = 2
@@ -78,6 +78,11 @@ class User < ActiveRecord::Base
   # Returns true if a password reset has expired
   def password_reset_expired?
     reset_sent_at < PASSWORD_RESET_EXPIRATION_HOURS.hours.ago
+  end
+
+  # Defines a proto-feed
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   # Creates a remember token
