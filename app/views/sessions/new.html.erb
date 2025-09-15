@@ -1,0 +1,45 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "login", :media => "all" %>
+<% end %>
+
+<!-- Login Page -->
+<section class="login-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="login-card fade-in">
+          <div class="login-header text-center mb-4">
+            <h1>Login</h1>
+            <p>Welcome back! Please sign in to your account.</p>
+          </div>
+          
+          <!-- Flash Messages -->
+          <%= render 'layouts/flash_messages' %>
+          
+          <%= form_tag login_path, method: :post, local: true, html: { class: "login-form" } do %>
+            <div class="mb-3">
+              <label for="session_email" class="form-label">Email</label>
+              <input type="email" name="session[email]" id="session_email" class="form-control" required />
+            </div>
+            
+            <div class="mb-3">
+              <label for="session_password" class="form-label">Password</label>
+              <input type="password" name="session[password]" id="session_password" class="form-control" required />
+            </div>
+            
+            <div class="d-grid">
+              <input type="submit" value="Login" class="btn btn-primary btn-lg" />
+            </div>
+          <% end %>
+          
+          <div class="login-footer text-center mt-4">
+            <p>Don't have an account? <%= link_to "Sign up now", signup_path, class: "text-primary" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% content_for :javascript do %>
+  <%= javascript_include_tag "login" %>
+<% end %>
