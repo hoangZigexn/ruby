@@ -1,0 +1,98 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag "contact", defer: true %>
+<% end %>
+
+<!-- Contact Page -->
+<section class="contact-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-header text-center mb-5">
+          <h1 class="fade-in">Liên hệ với chúng tôi</h1>
+          <p class="fade-in">Chúng tôi rất vui được nghe từ bạn! Hãy gửi tin nhắn cho chúng tôi và chúng tôi sẽ phản hồi sớm nhất có thể.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <!-- Contact Form -->
+      <div class="col-lg-8 mb-5">
+        <div class="contact-form-card fade-in">
+          <h3>Gửi tin nhắn</h3>
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">Họ</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">Tên</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Chủ đề</label>
+              <input type="text" class="form-control" id="subject" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Tin nhắn</label>
+              <textarea class="form-control" id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Gửi tin nhắn</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="col-lg-4">
+        <div class="contact-info-card fade-in">
+          <h3>Thông tin liên hệ</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Địa chỉ</h5>
+              <p>123 Đường ABC<br>Quận XYZ, TP.HN<br>Việt Nam</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Điện thoại</h5>
+              <p>+84 123 456 789</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Email</h5>
+              <p>contact@sampleapp.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h5>Giờ làm việc</h5>
+              <p>Thứ 2 - Thứ 6: 8:00 - 17:00<br>Thứ 7: 8:00 - 12:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
