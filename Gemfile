@@ -26,6 +26,12 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.2', :require => 'bcrypt'
 gem 'bcrypt-ruby', '~> 3.0.1', :require => 'bcrypt'
 
+# For pagination
+gem 'will_paginate', '~> 3.0'
+
+# For configuration management
+gem 'settingslogic'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

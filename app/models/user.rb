@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX, message: "is invalid" }
   validates :name, presence: { message: "can't be blank" }
   validates :password, presence: { message: "can't be blank" }, 
-            length: { minimum: 6, message: "is too short (minimum is 6 characters)" }
-  validates :password_confirmation, presence: { message: "can't be blank" }
+            length: { minimum: 6, message: "is too short (minimum is 6 characters)" },
+            allow_nil: true, on: :create
+  validates :password_confirmation, presence: { message: "can't be blank" },
+            allow_nil: true, on: :create
   validates :age, presence: { message: "can't be blank" }, 
             numericality: { only_integer: true, greater_than: 0, message: "must be a positive integer" }
   

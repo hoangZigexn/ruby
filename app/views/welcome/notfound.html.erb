@@ -1,0 +1,25 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "notfound", :media => "all" %>
+<% end %>
+
+<% provide(:title, "404 - Page Not Found") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="error-page text-center">
+        <div class="error-code">
+          <h1>404</h1>
+        </div>
+        <div class="error-message">
+          <h2>Page Not Found</h2>
+          <p>Sorry, the page you are looking for does not exist or has been moved.</p>
+        </div>
+        <div class="error-actions">
+          <%= link_to "Go to Home", home_path, class: "btn btn-primary btn-lg" %>
+          <%= link_to "Login", login_path, class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
