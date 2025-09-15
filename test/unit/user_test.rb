@@ -180,4 +180,107 @@ class UserTest < ActiveSupport::TestCase
     @user.birthday = nil
     assert @user.valid?
   end
+
+  # Test signup specific validations
+  test "should create user with valid signup data" do
+    user = User.new(
+      :name => "Test User",
+      :email => "test@example.com",
+      :password => "password123",
+      :password_confirmation => "password123",
+      :age => 25,
+      :first_name => "Test",
+      :last_name => "User",
+      :gender => 1,
+      :birthday => "1998-01-01"
+    )
+    assert user.valid?
+    assert user.save
+  end
+
+  test "should not save user with missing required fields" do
+    user = User.new
+    assert !user.valid?
+    assert user.errors[:name].any?
+    assert user.errors[:email].any?
+    assert user.errors[:password].any?
+    assert user.errors[:age].any?
+  end
+
+  test "should validate email format" do
+    @user.email = "invalid-email"
+    assert !@user.valid?
+    assert @user.errors[:email].any?
+  end
+
+  test "should validate email uniqueness case insensitive" do
+    @user.save
+    duplicate_user = @user.dup
+    duplicate_user.email = @user.email.upcase
+    assert !duplicate_user.valid?
+    assert duplicate_user.errors[:email].any?
+  end
+
+  test "should validate password length" do
+    @user.password = @user.password_confirmation = "123"
+    assert !@user.valid?
+    assert @user.errors[:password].any?
+  end
+
+  test "should validate password confirmation" do
+    @user.password = "password123"
+    @user.password_confirmation = "different"
+    assert !@user.valid?
+    assert @user.errors[:password_confirmation].any?
+  end
+
+  test "should validate age as positive integer" do
+    @user.age = -5
+    assert !@user.valid?
+    assert @user.errors[:age].any?
+
+    @user.age = 25.5
+    assert !@user.valid?
+    assert @user.errors[:age].any?
+  end
+
+  test "should accept valid gender values" do
+    [1, 2, 3].each do |gender|
+      @user.gender = gender
+      assert @user.valid?, "Gender #{gender} should be valid"
+    end
+  end
+
+  test "should accept nil gender" do
+    @user.gender = nil
+    assert @user.valid?
+  end
+
+  test "should accept valid birthday" do
+    @user.birthday = Date.new(1990, 1, 1)
+    assert @user.valid?
+  end
+
+  test "should accept nil birthday" do
+    @user.birthday = nil
+    assert @user.valid?
+  end
+
+  test "should authenticate with correct password" do
+    @user.password = @user.password_confirmation = "password123"
+    @user.save
+    assert_equal @user, @user.authenticate("password123")
+  end
+
+  test "should not authenticate with incorrect password" do
+    @user.password = @user.password_confirmation = "password123"
+    @user.save
+    assert !@user.authenticate("wrongpassword")
+  end
+
+  test "should downcase email before save" do
+    @user.email = "TEST@EXAMPLE.COM"
+    @user.save
+    assert_equal "test@example.com", @user.email
+  end
 end

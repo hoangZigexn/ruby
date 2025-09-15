@@ -9,80 +9,96 @@
       <div class="col-lg-6 col-md-8">
         <div class="signup-card fade-in">
           <div class="signup-header text-center mb-4">
-            <h1>Đăng ký tài khoản</h1>
-            <p>Tham gia cộng đồng của chúng tôi ngay hôm nay!</p>
+            <h1>Sign Up</h1>
+            <p>Join our community today!</p>
           </div>
           
-          <form class="signup-form">
+          <!-- Flash Messages -->
+          <%= render 'layouts/flash_messages' %>
+          
+          <%= form_for @user, url: signup_path, method: :post, local: true, html: { class: "signup-form" } do |f| %>
+            <!-- Error Messages -->
+            <%= render 'layouts/error_messages', object: @user %>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName" class="form-label">Họ *</label>
-                <input type="text" class="form-control" id="firstName" required>
+                <label for="user_first_name" class="form-label">First Name *</label>
+                <input type="text" name="user[first_name]" id="user_first_name" class="form-control" />
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName" class="form-label">Tên *</label>
-                <input type="text" class="form-control" id="lastName" required>
+                <label for="user_last_name" class="form-label">Last Name *</label>
+                <input type="text" name="user[last_name]" id="user_last_name" class="form-control" />
               </div>
             </div>
             
             <div class="mb-3">
-              <label for="email" class="form-label">Email *</label>
-              <input type="email" class="form-control" id="email" required>
-              <div class="form-text">Chúng tôi sẽ không bao giờ chia sẻ email của bạn.</div>
+              <label for="user_name" class="form-label">Full Name *</label>
+              <input type="text" name="user[name]" id="user_name" class="form-control" />
             </div>
             
             <div class="mb-3">
-              <label for="username" class="form-label">Tên đăng nhập *</label>
-              <input type="text" class="form-control" id="username" required>
+              <label for="user_email" class="form-label">Email *</label>
+              <input type="email" name="user[email]" id="user_email" class="form-control" />
+              <div class="form-text">We'll never share your email with anyone else.</div>
             </div>
             
             <div class="mb-3">
+<<<<<<< HEAD
+              <label for="user_password" class="form-label">Password *</label>
+              <input type="password" name="user[password]" id="user_password" class="form-control" />
+              <div class="form-text">Password must be at least 6 characters long.</div>
+=======
               <label for="password" class="form-label">Mật khẩu *</label>
               <input type="password" class="form-control" id="password" required>
               <div class="form-text">Mật khẩu phải có ít nhất 6 ký tự.</div>
+>>>>>>> main
             </div>
             
             <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Xác nhận mật khẩu *</label>
-              <input type="password" class="form-control" id="confirmPassword" required>
+              <label for="user_password_confirmation" class="form-label">Confirm Password *</label>
+              <input type="password" name="user[password_confirmation]" id="user_password_confirmation" class="form-control" />
             </div>
             
             <div class="mb-3">
-              <label for="birthDate" class="form-label">Ngày sinh</label>
-              <input type="date" class="form-control" id="birthDate">
+              <label for="user_age" class="form-label">Age *</label>
+              <input type="number" name="user[age]" id="user_age" class="form-control" min="1" />
             </div>
             
             <div class="mb-3">
-              <label for="gender" class="form-label">Giới tính</label>
-              <select class="form-control" id="gender">
-                <option value="">Chọn giới tính</option>
-                <option value="male">Nam</option>
-                <option value="female">Nữ</option>
-                <option value="other">Khác</option>
+              <label for="user_birthday" class="form-label">Birthday</label>
+              <input type="date" name="user[birthday]" id="user_birthday" class="form-control" />
+            </div>
+            
+            <div class="mb-3">
+              <label for="user_gender" class="form-label">Gender</label>
+              <select name="user[gender]" id="user_gender" class="form-control">
+                <option value="">Select Gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option>
               </select>
             </div>
             
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="agreeTerms" required>
               <label class="form-check-label" for="agreeTerms">
-                Tôi đồng ý với <a href="#" class="text-primary">Điều khoản sử dụng</a> và <a href="#" class="text-primary">Chính sách bảo mật</a> *
+                I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a> *
               </label>
             </div>
             
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="newsletter">
               <label class="form-check-label" for="newsletter">
-                Tôi muốn nhận thông tin cập nhật và khuyến mãi qua email
+                I want to receive updates and promotions via email
               </label>
             </div>
             
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg">Đăng ký ngay</button>
+              <input type="submit" value="Sign Up Now" class="btn btn-primary btn-lg" />
             </div>
-          </form>
+          <% end %>
           
           <div class="signup-footer text-center mt-4">
-            <p>Đã có tài khoản? <a href="#" class="text-primary">Đăng nhập ngay</a></p>
+            <p>Already have an account? <a href="#" class="text-primary">Login now</a></p>
           </div>
         </div>
       </div>
