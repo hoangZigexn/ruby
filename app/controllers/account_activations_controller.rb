@@ -16,6 +16,6 @@ class AccountActivationsController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params[:user]
     end
 end
