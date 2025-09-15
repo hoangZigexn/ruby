@@ -1,6 +1,5 @@
 # Development environment settings
 app:
-  name: "Learn Ruby App - Development"
   version: "1.0.0"
   timezone: "Asia/Ho_Chi_Minh"
   debug: true
