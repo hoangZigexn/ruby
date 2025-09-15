@@ -126,3 +126,21 @@
 .btn-close:hover {
   opacity: 0.75;
 }
+
+/* Form check styles */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+  margin-top: 0;
+}
+
+.form-check-label {
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+}
