@@ -1,0 +1,16 @@
+# Production environment settings
+app:
+  name: "Learn Ruby App"
+  version: "1.0.0"
+  timezone: "Asia/Ho_Chi_Minh"
+  debug: false
+  log_level: "info"
+
+formats:
+  date: "%B %d, %Y"
+
+pagination:
+  per_page: 10
+
+size_avater: 50
+default_size_avater: 80
