@@ -37,6 +37,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # GET /users/1/welcome
+  def welcome
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
