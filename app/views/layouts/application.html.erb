@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ruby on Rails Tutorial Sample App</title>
+  <title><%= t('app.name') %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -11,6 +11,13 @@
   <!-- Custom CSS -->
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= yield :stylesheets %>
+  
+  <!-- JavaScript -->
+  <%= yield :javascript %>
+  <%= javascript_include_tag "application", defer: true %>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
   
   <%= csrf_meta_tags %>
 </head>
@@ -23,11 +30,5 @@
   
   <%= render 'layouts/footer' %>
 
-  <!-- JavaScript -->
-  <%= javascript_include_tag "application" %>
-  <%= yield :javascript %>
-  
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
