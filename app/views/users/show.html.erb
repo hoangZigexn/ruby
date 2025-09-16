@@ -1,5 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row margin-top-main">
+<% @format_settings = Settings.formats %>
+<div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
@@ -53,7 +55,7 @@
       <% if @user.birthday.present? %>
         <div class="detail-item">
           <strong>Birthday:</strong>
-          <span><%= @user.birthday.strftime("%B %d, %Y") %></span>
+          <span><%= @user.birthday.strftime(@format_settings.date) %></span>
         </div>
       <% end %>
       
@@ -73,7 +75,7 @@
       
       <div class="detail-item">
         <strong>Member since:</strong>
-        <span><%= @user.created_at.strftime("%B %d, %Y") %></span>
+        <span><%= @user.created_at.strftime(@format_settings.date) %></span>
       </div>
     </div>
     
