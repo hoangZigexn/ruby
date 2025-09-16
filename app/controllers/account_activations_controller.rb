@@ -1,7 +1,7 @@
 class AccountActivationsController < ApplicationController
 
   def edit
-    user = User.where(email: params[:email].downcase).first
+    user = User.find_by_email(params[:email].downcase)
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate
       log_in user
@@ -15,7 +15,7 @@ class AccountActivationsController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params[:user]
+  end
 end

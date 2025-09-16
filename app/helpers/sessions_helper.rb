@@ -60,7 +60,7 @@ module SessionsHelper
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(login_url) unless current_user?(@user)
+    redirect_to(notfound_path) unless current_user?(@user)
   end
 
   # Returns the Gravatar for the given user.
@@ -78,7 +78,7 @@ module SessionsHelper
 
   # Confirms an admin user.
   def admin_user
-    redirect_to(login_url) unless admin_user?
+    redirect_to(notfound_path) unless admin_user?
   end
 
   # Confirms the user has permission to view the profile.
@@ -86,7 +86,7 @@ module SessionsHelper
     @user = User.find(params[:id])
     unless current_user?(@user) || admin_user?
       flash[:danger] = "You don't have permission to view this profile."
-      redirect_to(login_url)
+      redirect_to(notfound_path)
     end
   end
 end

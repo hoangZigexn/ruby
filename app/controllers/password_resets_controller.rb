@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
 
   def create
     puts "params: #{params}"
-    @user = User.where(email: params[:password_reset][:email].downcase).first
+    @user = User.find_by_email(params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
@@ -39,6 +39,7 @@ class PasswordResetsController < ApplicationController
 
   private
 
+<<<<<<< HEAD
     def user_params
       params[:user]
     end
@@ -63,4 +64,28 @@ class PasswordResetsController < ApplicationController
         redirect_to new_password_reset_url
       end
     end
+=======
+  def user_params
+    params[:user]
+  end
+
+  def get_user
+    @user = User.find_by_email(params[:email].downcase)
+    @user.reset_token = params[:id] if @user
+  end
+
+  # Confirms a valid user.
+  def valid_user
+    return if @user&.activated? && @user.authenticated?(:reset, params[:id])
+    redirect_to login_url
+  end
+
+  # Checks expiration of reset token.
+  def check_expiration
+    return unless @user.password_reset_expired?
+  
+    flash[:danger] = "Password reset has expired."
+    redirect_to new_password_reset_url
+  end
+>>>>>>> main
 end
