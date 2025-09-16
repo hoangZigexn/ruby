@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   has_many :microposts
   has_secure_password
+
+  PASSWORD_RESET_EXPIRATION_HOURS = 2
   
   attr_accessible :email, :name, :age, :gender, :last_name, :first_name, :birthday, 
-                  :password, :password_confirmation, :admin, :activation_digest, :activated, :activated_at
+                  :password, :password_confirmation, :admin, :activation_digest, :activated, :activated_at,
+                  :reset_digest, :reset_sent_at
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: { message: "can't be blank" }, 
@@ -12,9 +15,9 @@ class User < ActiveRecord::Base
   validates :name, presence: { message: "can't be blank" }
   validates :password, presence: { message: "can't be blank" }, 
             length: { minimum: 6, message: "is too short (minimum is 6 characters)" },
-            allow_nil: true, on: :create
+            allow_nil: true
   validates :password_confirmation, presence: { message: "can't be blank" },
-            allow_nil: true, on: :create
+            allow_nil: true
   validates :age, presence: { message: "can't be blank" }, 
             numericality: { only_integer: true, greater_than: 0, message: "must be a positive integer" }
   
@@ -60,8 +63,25 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
+  # Sets the password reset attributes
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver
+  end
+
+  # Returns true if a password reset has expired
+  def password_reset_expired?
+    reset_sent_at < PASSWORD_RESET_EXPIRATION_HOURS.hours.ago
+  end
+
   # Creates a remember token
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   private
 
