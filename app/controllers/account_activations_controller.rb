@@ -15,7 +15,7 @@ class AccountActivationsController < ApplicationController
 
   private
 
-    def user_params
-      params[:user]
-    end
+  def user_params
+    params[:user]
+  end
 end
