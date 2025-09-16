@@ -1,5 +1,5 @@
 // Contact page JavaScript functionality
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Fade in animation
   var observerOptions = {
     threshold: 0.1,
