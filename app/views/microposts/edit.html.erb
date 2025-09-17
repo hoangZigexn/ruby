@@ -1,6 +1,8 @@
-<h1>Editing micropost</h1>
+<h1>Edit Micropost</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @micropost %> |
-<%= link_to 'Back', microposts_path %>
+<div class="actions">
+  <%= link_to 'Show', @micropost, class: 'btn btn-info' %>
+  <%= link_to 'Back to Microposts', microposts_path, class: 'btn btn-secondary' %>
+</div>

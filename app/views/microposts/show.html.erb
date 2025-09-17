@@ -1,15 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @micropost.content %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @micropost.user.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
-<%= link_to 'Back', microposts_path %>
+<div class="micropost-show">
+  <div class="micropost-content">
+    <h3>Micropost Details</h3>
+    
+    <div class="micropost-item">
+      <p><strong>Content:</strong></p>
+      <p><%= @micropost.content %></p>
+      
+      <p><strong>Author:</strong></p>
+      <p><%= link_to @micropost.user.name, @micropost.user %></p>
+      
+      <p><strong>Created:</strong></p>
+      <p><%= @micropost.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+    </div>
+    
+    <div class="actions">
+      <% if current_user?(@micropost.user) %>
+        <%= link_to 'Edit', edit_micropost_path(@micropost), class: 'btn btn-primary' %>
+        <%= link_to 'Delete', @micropost, method: :delete, 
+                    data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <% end %>
+      <%= link_to 'Back to Microposts', microposts_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
