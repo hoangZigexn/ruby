@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
 
   # Defines a proto-feed
   def feed
-    Micropost.find_by_user_id(id)
+    Micropost.where("user_id = ?", id)
   end
 
   # Creates a remember token
