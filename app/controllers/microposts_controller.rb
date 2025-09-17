@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @microposts = Micropost.paginate(page: params[:page], per_page: 10)
+    @microposts = Micropost.recent.paginate(page: params[:page], per_page: 10)
   end
 
   def show

@@ -5,5 +5,6 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
   
-  default_scope -> { order('created_at DESC') }
+  scope :recent, -> { order('created_at DESC') }
+  scope :oldest, -> { order('created_at ASC') }
 end
