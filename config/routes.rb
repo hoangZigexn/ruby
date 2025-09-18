@@ -11,8 +11,10 @@ App::Application.routes.draw do
   resources :users do
     member do
       get :welcome
+      get :following, :followers
     end
   end
+  resources :relationships, only: [:create, :destroy]
 
   # Hello World route
   get 'hello' => 'welcome#hello'
